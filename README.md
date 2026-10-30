@@ -86,7 +86,7 @@ npx wrangler d1 create replace-lba
 ```bash
 npm run db:migrate:remote   # สร้างตารางบน D1 จาก drizzle/*.sql
 npm run db:seed             # (ถ้ายังไม่ได้ทำ) นำเข้า Excel ลง local.db
-npm run db:export           # local.db -> drizzle/seed-data.sql
+npm run db:export           # local.db -> data/seed-data.sql
 npm run db:seed:remote      # นำข้อมูลเข้า D1
 npm run deploy              # build + wrangler deploy
 ```

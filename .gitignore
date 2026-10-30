@@ -33,4 +33,5 @@ data/*.xlsx
 !data/.gitkeep
 
 # ข้อมูล seed ที่ export สำหรับ D1 (มีข้อมูลส่วนบุคคล)
+data/*.sql
 drizzle/seed-data.sql

@@ -2,7 +2,7 @@
  * ส่งออกข้อมูลจาก SQLite ในเครื่อง (หลัง npm run db:seed) เป็นไฟล์ SQL
  * สำหรับนำเข้า Cloudflare D1:
  *
- *   npm run db:export                 -> drizzle/seed-data.sql
+ *   npm run db:export                 -> data/seed-data.sql
  *   npm run db:migrate:remote         -> สร้างตารางบน D1 (ใช้ไฟล์ใน drizzle/)
  *   npm run db:seed:remote            -> นำข้อมูลเข้า D1
  */
@@ -11,7 +11,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const DATABASE_URL = process.env.DATABASE_URL ?? 'file:local.db';
-const OUT = process.argv[2] ?? path.resolve('drizzle/seed-data.sql');
+// หมายเหตุ: ห้ามวางไว้ใน drizzle/ เพราะ wrangler จะนับทุก .sql ในโฟลเดอร์ migrations เป็น migration
+const OUT = process.argv[2] ?? path.resolve('data/seed-data.sql');
 const TABLES = ['users', 'sites', 'site_posts', 'tasks', 'activity_logs']; // ลำดับตาม foreign key
 const ROWS_PER_STATEMENT = 100;
 

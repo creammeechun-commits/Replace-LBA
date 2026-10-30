@@ -17,7 +17,7 @@
 		{
 			"binding": "DB",
 			"database_name": "replace-lba",
-			"database_id": "REPLACE_WITH_YOUR_D1_DATABASE_ID",
+			"database_id": "db7d45bf-4db7-4b02-be3b-ba3aa7264ffb",
 			"migrations_dir": "drizzle"
 		}
 	]

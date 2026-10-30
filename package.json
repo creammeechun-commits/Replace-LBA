@@ -22,7 +22,7 @@
 		"deploy": "npm run build && wrangler deploy",
 		"db:export": "tsx scripts/export-sql.ts",
 		"db:migrate:remote": "wrangler d1 migrations apply replace-lba --remote",
-		"db:seed:remote": "wrangler d1 execute replace-lba --remote --file=drizzle/seed-data.sql"
+		"db:seed:remote": "wrangler d1 execute replace-lba --remote --file=data/seed-data.sql --yes"
 	},
 	"devDependencies": {
 		"@libsql/client": "^0.17.3",
