@@ -52,15 +52,16 @@
 {#if !data.user}
 	{@render children()}
 {:else}
-	<div class="flex min-h-screen bg-muted/40">
+	<div class="flex min-h-screen">
 		<!-- Sidebar -->
 		<aside
-			class="fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r bg-sidebar text-sidebar-foreground transition-transform md:static md:translate-x-0 {open
+			class="fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-white/60 bg-gradient-to-b from-pastel-lavender via-white/70 to-pastel-mint text-sidebar-foreground backdrop-blur-md transition-transform md:static md:translate-x-0 {open
 				? 'translate-x-0'
 				: '-translate-x-full'}"
 		>
-			<div class="flex h-14 items-center gap-2 border-b px-4">
-				<span class="flex size-8 items-center justify-center rounded-md bg-primary font-bold text-primary-foreground"
+			<div class="flex h-16 items-center gap-2.5 px-4">
+				<span
+					class="flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-chart-2 font-bold text-white shadow-md shadow-primary/30"
 					>L</span
 				>
 				<div class="leading-tight">
@@ -73,10 +74,10 @@
 					<a
 						href={item.href}
 						onclick={() => (open = false)}
-						class="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent {isActive(
+						class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium transition-all hover:bg-white/70 {isActive(
 							item.href
 						)
-							? 'bg-primary text-primary-foreground hover:bg-primary'
+							? 'bg-white text-primary shadow-sm shadow-primary/15 hover:bg-white'
 							: 'text-muted-foreground'}"
 					>
 						<item.icon class="size-4" />
@@ -87,13 +88,13 @@
 					<a
 						href="/tasks/new"
 						onclick={() => (open = false)}
-						class="mt-3 flex items-center gap-3 rounded-md border border-dashed px-3 py-2 text-sm font-medium text-primary hover:bg-accent"
+						class="mt-3 flex items-center gap-3 rounded-xl bg-primary px-3 py-2 text-sm font-medium text-primary-foreground shadow-md shadow-primary/25 hover:bg-primary/90"
 					>
 						<Plus class="size-4" /> บันทึกงานแทนใหม่
 					</a>
 				{/if}
 			</nav>
-			<div class="border-t p-3">
+			<div class="m-3 rounded-xl bg-white/70 p-3">
 				<div class="mb-2 px-1 text-sm">
 					<div class="font-medium">{data.user.nickname ?? data.user.fullName}</div>
 					<div class="text-xs text-muted-foreground">
@@ -103,7 +104,7 @@
 				<form method="POST" action="/logout">
 					<button
 						type="submit"
-						class="flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground"
+						class="flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-sm text-muted-foreground hover:bg-pastel-rose hover:text-rose-800"
 					>
 						<LogOut class="size-4" /> ออกจากระบบ
 					</button>
@@ -120,7 +121,7 @@
 
 		<!-- Main -->
 		<div class="flex min-w-0 flex-1 flex-col">
-			<header class="flex h-14 items-center gap-3 border-b bg-background px-4 md:hidden">
+			<header class="flex h-14 items-center gap-3 border-b border-white/60 bg-white/70 px-4 backdrop-blur md:hidden">
 				<button class="rounded-md p-2 hover:bg-accent" onclick={() => (open = !open)} aria-label="เมนู">
 					<Menu class="size-5" />
 				</button>

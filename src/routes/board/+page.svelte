@@ -58,7 +58,11 @@
 		else url.searchParams.delete('siteId');
 		goto(url.toString());
 	}
-	const colTone: Record<string, string> = { todo: 'border-t-status-todo', doing: 'border-t-status-doing', done: 'border-t-status-done' };
+	const colTone: Record<string, string> = {
+		todo: 'border-t-status-todo bg-pastel-rose/60',
+		doing: 'border-t-status-doing bg-pastel-peach/60',
+		done: 'border-t-status-done bg-pastel-mint/60'
+	};
 </script>
 
 <div class="space-y-4">
@@ -84,7 +88,7 @@
 	<div class="grid gap-4 md:grid-cols-3">
 		{#each columns as col (col)}
 			<section
-				class="flex min-h-[60vh] flex-col rounded-xl border border-t-4 bg-muted/30 {colTone[col]} {overCol === col ? 'ring-2 ring-ring/40' : ''}"
+				class="flex min-h-[60vh] flex-col rounded-2xl border border-white/70 border-t-4 {colTone[col]} {overCol === col ? 'ring-2 ring-ring/40' : ''}"
 				role="list"
 				aria-label={STATUS_LABELS[col]}
 				ondragover={(e) => { if (canMove) { e.preventDefault(); overCol = col; } }}

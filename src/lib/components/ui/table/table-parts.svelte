@@ -17,7 +17,7 @@
 		tbody: '[&_tr:last-child]:border-0',
 		tfoot: 'border-t bg-muted/50 font-medium [&>tr]:last:border-b-0',
 		tr: 'border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted',
-		th: 'h-10 px-2 text-left align-middle font-medium whitespace-nowrap text-muted-foreground',
+		th: 'h-10 px-2 text-left align-middle text-xs font-semibold tracking-wide whitespace-nowrap text-foreground/70',
 		td: 'p-2 align-middle whitespace-nowrap'
 	};
 </script>

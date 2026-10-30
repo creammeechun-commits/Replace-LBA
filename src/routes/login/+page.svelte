@@ -10,10 +10,12 @@
 	let loading = $state(false);
 </script>
 
-<div class="flex min-h-screen items-center justify-center bg-muted/40 p-4">
+<div class="flex min-h-screen items-center justify-center p-4">
 	<Card.Root class="w-full max-w-sm">
 		<Card.Header class="flex-col items-start">
-			<div class="mb-2 flex size-10 items-center justify-center rounded-lg bg-primary text-lg font-bold text-primary-foreground">
+			<div
+				class="mb-2 flex size-12 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-chart-2 text-xl font-bold text-white shadow-md shadow-primary/30"
+			>
 				L
 			</div>
 			<Card.Title class="text-xl">LBA Replace</Card.Title>
@@ -46,7 +48,7 @@
 					{loading ? 'กำลังเข้าสู่ระบบ...' : 'เข้าสู่ระบบ'}
 				</Button>
 			</form>
-			<div class="mt-4 rounded-md bg-muted p-3 text-xs text-muted-foreground">
+			<div class="mt-4 rounded-xl bg-pastel-lavender p-3 text-xs text-muted-foreground">
 				<div class="mb-1 font-medium text-foreground">บัญชีทดสอบ</div>
 				<div>ธุรการ: <code>admin</code> / <code>admin1234</code> (หรือ ice, pat / 1234)</div>
 				<div>หัวหน้า: <code>manager</code> / <code>manager1234</code></div>

@@ -3,46 +3,54 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* shadcn-svelte design tokens (base color: zinc) */
+/* ธีมพาสเทล: ลาเวนเดอร์ (primary) · มินต์ · พีช · โรส บนพื้นครีมอมม่วง */
 :root {
-	--radius: 0.625rem;
-	--background: oklch(1 0 0);
-	--foreground: oklch(0.141 0.005 285.823);
+	--radius: 0.875rem;
+	--background: oklch(0.975 0.012 320);
+	--foreground: oklch(0.3 0.035 300);
 	--card: oklch(1 0 0);
-	--card-foreground: oklch(0.141 0.005 285.823);
+	--card-foreground: oklch(0.3 0.035 300);
 	--popover: oklch(1 0 0);
-	--popover-foreground: oklch(0.141 0.005 285.823);
-	--primary: oklch(0.21 0.006 285.885);
-	--primary-foreground: oklch(0.985 0 0);
-	--secondary: oklch(0.967 0.001 286.375);
-	--secondary-foreground: oklch(0.21 0.006 285.885);
-	--muted: oklch(0.967 0.001 286.375);
-	--muted-foreground: oklch(0.552 0.016 285.938);
-	--accent: oklch(0.967 0.001 286.375);
-	--accent-foreground: oklch(0.21 0.006 285.885);
-	--destructive: oklch(0.577 0.245 27.325);
-	--destructive-foreground: oklch(0.985 0 0);
-	--border: oklch(0.92 0.004 286.32);
-	--input: oklch(0.92 0.004 286.32);
-	--ring: oklch(0.705 0.015 286.067);
-	--sidebar: oklch(0.985 0 0);
-	--sidebar-foreground: oklch(0.141 0.005 285.823);
-	--sidebar-border: oklch(0.92 0.004 286.32);
-	/* สีสำหรับสถานะ / กราฟ */
-	--status-todo: oklch(0.6 0.19 25);
-	--status-doing: oklch(0.72 0.17 70);
-	--status-done: oklch(0.6 0.15 150);
-	--chart-1: oklch(0.55 0.15 250);
-	--chart-2: oklch(0.7 0.12 180);
-	--chart-3: oklch(0.72 0.17 70);
-	--chart-4: oklch(0.6 0.19 25);
-	--chart-5: oklch(0.6 0.15 300);
+	--popover-foreground: oklch(0.3 0.035 300);
+	--primary: oklch(0.6 0.14 300);
+	--primary-foreground: oklch(0.99 0 0);
+	--secondary: oklch(0.93 0.05 165);
+	--secondary-foreground: oklch(0.32 0.06 165);
+	--muted: oklch(0.955 0.015 310);
+	--muted-foreground: oklch(0.52 0.03 300);
+	--accent: oklch(0.94 0.045 60);
+	--accent-foreground: oklch(0.35 0.06 50);
+	--destructive: oklch(0.62 0.16 15);
+	--destructive-foreground: oklch(0.99 0 0);
+	--border: oklch(0.905 0.02 310);
+	--input: oklch(0.9 0.02 310);
+	--ring: oklch(0.72 0.1 300);
+	--sidebar: oklch(0.97 0.02 310);
+	--sidebar-foreground: oklch(0.3 0.035 300);
+	--sidebar-border: oklch(0.9 0.025 310);
+	/* สถานะงาน */
+	--status-todo: oklch(0.66 0.15 15);
+	--status-doing: oklch(0.72 0.13 60);
+	--status-done: oklch(0.62 0.12 165);
+	/* พื้นพาสเทลอ่อนสำหรับ tile / column */
+	--pastel-lavender: oklch(0.95 0.035 300);
+	--pastel-mint: oklch(0.95 0.04 165);
+	--pastel-peach: oklch(0.955 0.04 60);
+	--pastel-rose: oklch(0.955 0.03 15);
+	--pastel-sky: oklch(0.95 0.035 230);
+	--pastel-lemon: oklch(0.965 0.045 95);
+	/* กราฟ */
+	--chart-1: oklch(0.7 0.11 300);
+	--chart-2: oklch(0.72 0.1 165);
+	--chart-3: oklch(0.78 0.11 60);
+	--chart-4: oklch(0.7 0.13 15);
+	--chart-5: oklch(0.72 0.1 230);
 }
 
 @theme inline {
-	--font-sans: 'Segoe UI', 'Noto Sans Thai', 'Sarabun', 'Tahoma', ui-sans-serif, system-ui, sans-serif;
-	--radius-sm: calc(var(--radius) - 4px);
-	--radius-md: calc(var(--radius) - 2px);
+	--font-sans: 'Prompt', 'Noto Sans Thai', 'Segoe UI', ui-sans-serif, system-ui, sans-serif;
+	--radius-sm: calc(var(--radius) - 6px);
+	--radius-md: calc(var(--radius) - 3px);
 	--radius-lg: var(--radius);
 	--radius-xl: calc(var(--radius) + 4px);
 	--color-background: var(--background);
@@ -70,6 +78,12 @@
 	--color-status-todo: var(--status-todo);
 	--color-status-doing: var(--status-doing);
 	--color-status-done: var(--status-done);
+	--color-pastel-lavender: var(--pastel-lavender);
+	--color-pastel-mint: var(--pastel-mint);
+	--color-pastel-peach: var(--pastel-peach);
+	--color-pastel-rose: var(--pastel-rose);
+	--color-pastel-sky: var(--pastel-sky);
+	--color-pastel-lemon: var(--pastel-lemon);
 	--color-chart-1: var(--chart-1);
 	--color-chart-2: var(--chart-2);
 	--color-chart-3: var(--chart-3);
@@ -82,12 +96,54 @@
 		@apply border-border outline-ring/50;
 	}
 	body {
-		@apply bg-background text-foreground antialiased;
+		@apply text-foreground antialiased;
+		background-color: var(--background);
+		background-image:
+			radial-gradient(60rem 30rem at -10% -10%, oklch(0.93 0.05 300 / 0.55), transparent 60%),
+			radial-gradient(50rem 28rem at 110% 0%, oklch(0.94 0.05 165 / 0.5), transparent 60%),
+			radial-gradient(40rem 24rem at 50% 110%, oklch(0.95 0.05 60 / 0.45), transparent 60%);
+		background-attachment: fixed;
 	}
-	/* ให้ form controls ของ @tailwindcss/forms เข้ากับ token */
 	select,
 	input,
 	textarea {
 		@apply rounded-md;
+	}
+	h1,
+	h2,
+	h3 {
+		letter-spacing: -0.01em;
+	}
+}
+
+@layer components {
+	/* KPI tiles ไล่สีพาสเทลทีละใบ */
+	.kpi:nth-child(6n + 1) {
+		background: linear-gradient(135deg, var(--pastel-lavender), white 70%);
+	}
+	.kpi:nth-child(6n + 2) {
+		background: linear-gradient(135deg, var(--pastel-mint), white 70%);
+	}
+	.kpi:nth-child(6n + 3) {
+		background: linear-gradient(135deg, var(--pastel-rose), white 70%);
+	}
+	.kpi:nth-child(6n + 4) {
+		background: linear-gradient(135deg, var(--pastel-peach), white 70%);
+	}
+	.kpi:nth-child(6n + 5) {
+		background: linear-gradient(135deg, var(--pastel-lemon), white 70%);
+	}
+	.kpi:nth-child(6n + 6) {
+		background: linear-gradient(135deg, var(--pastel-sky), white 70%);
+	}
+	/* หัวตารางโทนอ่อน */
+	thead {
+		background: var(--pastel-lavender);
+	}
+	thead th:first-child {
+		border-top-left-radius: var(--radius-md);
+	}
+	thead th:last-child {
+		border-top-right-radius: var(--radius-md);
 	}
 }

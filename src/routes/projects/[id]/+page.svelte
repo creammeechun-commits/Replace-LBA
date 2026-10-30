@@ -62,7 +62,7 @@
 	<!-- สรุป -->
 	<div class="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-7">
 		{#snippet tile(label: string, value: string | number, tone = '')}
-			<Card.Root class="gap-1 py-3"><Card.Content><div class="text-xs text-muted-foreground">{label}</div><div class="text-xl font-semibold tabular-nums {tone}">{value}</div></Card.Content></Card.Root>
+			<Card.Root class="kpi gap-1 py-3"><Card.Content><div class="text-xs text-muted-foreground">{label}</div><div class="text-xl font-semibold tabular-nums {tone}">{value}</div></Card.Content></Card.Root>
 		{/snippet}
 		{@render tile('งานแทนในช่วง', data.summary.total)}
 		{@render tile('ส่งคนแทน', data.summary.spare)}

@@ -56,7 +56,7 @@
 	<!-- KPI -->
 	<div class="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6">
 		{#snippet tile(label: string, value: string | number, sub?: string, tone?: string)}
-			<Card.Root class="gap-1 py-3">
+			<Card.Root class="kpi gap-1 py-3">
 				<Card.Content>
 					<div class="text-xs text-muted-foreground">{label}</div>
 					<div class="text-2xl font-semibold tabular-nums {tone ?? ''}">{value}</div>
