@@ -1,7 +1,24 @@
 {
 	"$schema": "./node_modules/wrangler/config-schema.json",
-	"name": "replace",
+	// ชื่อต้องตรงกับ Worker ใน Cloudflare dashboard (Workers & Pages → replace-lba)
+	"name": "replace-lba",
 	"compatibility_date": "2026-10-30",
+	// nodejs_als = AsyncLocalStorage (ใช้ส่ง D1 ต่อ request ให้ db module)
 	"compatibility_flags": ["nodejs_als"],
-	"pages_build_output_dir": ".svelte-kit/cloudflare"
+	"main": ".svelte-kit/cloudflare/_worker.js",
+	"assets": {
+		"binding": "ASSETS",
+		"directory": ".svelte-kit/cloudflare"
+	},
+	"observability": { "enabled": true },
+	// ฐานข้อมูล Cloudflare D1 — สร้างด้วย `npx wrangler d1 create replace-lba`
+	// แล้วนำ database_id ที่ได้มาแทนค่าด้านล่าง จากนั้น `npm run db:migrate:remote`
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "replace-lba",
+			"database_id": "REPLACE_WITH_YOUR_D1_DATABASE_ID",
+			"migrations_dir": "drizzle"
+		}
+	]
 }

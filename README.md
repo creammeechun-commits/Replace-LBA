@@ -70,9 +70,28 @@ npm run preview      # ทดสอบด้วย wrangler pages dev
 หมายเหตุ: บน Windows เครื่องนี้ rolldown (bundler ของ Vite 8) ล่มด้วย access violation ระหว่าง build ฝั่ง client เมื่อใช้หลาย thread
 จึงตั้ง `TOKIO_WORKER_THREADS=1` ไว้ใน `vite.config.ts` (ลบออกได้เมื่อ Vite/rolldown แก้บั๊กแล้ว)
 
-## ย้ายไป Cloudflare D1
+## Deploy บน Cloudflare Workers + D1
 
-1. `wrangler d1 create lba-replace` แล้วเพิ่ม binding `DB` ใน `wrangler.jsonc`
-2. `wrangler d1 migrations apply lba-replace --remote` โดยใช้ไฟล์ใน `drizzle/`
-3. ใน `src/lib/server/db/index.ts` ใช้ `drizzle(platform.env.DB, { schema })` จาก `drizzle-orm/d1`
-4. `npm run build` แล้ว deploy ผ่าน Cloudflare Pages (output `.svelte-kit/cloudflare`)
+โค้ดเลือกฐานข้อมูลอัตโนมัติ: ในเครื่องใช้ SQLite (libsql) บน Cloudflare ใช้ D1 binding ชื่อ `DB`
+(`src/lib/server/db/index.ts` + `hooks.server.ts`) ไม่ต้องแก้ query
+
+ทำครั้งแรก (ในเครื่อง ต้อง `npx wrangler login` ก่อน):
+
+```bash
+npx wrangler d1 create replace-lba
+```
+
+นำ `database_id` ที่ได้ไปแทนค่า `REPLACE_WITH_YOUR_D1_DATABASE_ID` ใน `wrangler.jsonc` แล้ว
+
+```bash
+npm run db:migrate:remote   # สร้างตารางบน D1 จาก drizzle/*.sql
+npm run db:seed             # (ถ้ายังไม่ได้ทำ) นำเข้า Excel ลง local.db
+npm run db:export           # local.db -> drizzle/seed-data.sql
+npm run db:seed:remote      # นำข้อมูลเข้า D1
+npm run deploy              # build + wrangler deploy
+```
+
+ถ้าใช้ Workers Builds (เชื่อม GitHub ใน dashboard): Build command = `npm run build`, Deploy command = `npx wrangler deploy`
+ไม่ต้องตั้ง `DATABASE_URL` บน Cloudflare (เว้นว่างได้ ระบบจะใช้ D1)
+
+หลังเปลี่ยน `wrangler.jsonc` ให้รัน `npm run gen` เพื่ออัปเดต type ของ binding

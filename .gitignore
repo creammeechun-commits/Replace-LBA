@@ -31,3 +31,6 @@ worker-configuration.d.ts
 # (วางไฟล์ไว้ที่ data/lba-plan.xlsx ในเครื่องแล้วรัน npm run db:seed)
 data/*.xlsx
 !data/.gitkeep
+
+# ข้อมูล seed ที่ export สำหรับ D1 (มีข้อมูลส่วนบุคคล)
+drizzle/seed-data.sql

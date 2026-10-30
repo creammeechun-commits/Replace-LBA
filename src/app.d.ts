@@ -3,6 +3,12 @@
 import type { SessionUser } from '#lib/server/auth';
 
 declare global {
+	// Cloudflare bindings ตาม wrangler.jsonc (runtime types มาจาก worker-configuration.d.ts ที่ `npm run gen` สร้าง)
+	interface Env {
+		DB: D1Database;
+		ASSETS: Fetcher;
+	}
+
 	namespace App {
 		interface Platform {
 			env: Env;
